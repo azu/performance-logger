@@ -1,0 +1,2 @@
+--require ./test/deps.js
+--compilers js:babel-register
