@@ -5,8 +5,8 @@ const EventEmitter = require("events");
 export default class PerfLogger extends EventEmitter {
     static get Events() {
         return {
-            "log": "log",
-            "end": "end"
+            "mark": "mark",
+            "complete": "complete"
         }
     }
 
@@ -43,9 +43,9 @@ export default class PerfLogger extends EventEmitter {
         if (this._isAlreadyOutput) {
             return;
         }
-        this._mark(markerName);
+        this._addMarking(markerName);
         if (this.isAllMarked) {
-            this.emit(PerfLogger.Events.end);
+            this.emit(PerfLogger.Events.complete);
             this._isAlreadyOutput = true;
         }
     }
@@ -55,7 +55,7 @@ export default class PerfLogger extends EventEmitter {
      * @param {string} markerName
      * @private
      */
-    _mark(markerName) {
+    _addMarking(markerName) {
         if (this._completedEventMap.has(markerName)) {
             return;
         }

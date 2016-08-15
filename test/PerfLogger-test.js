@@ -10,7 +10,7 @@ describe("PerfLogger-test", function() {
                 "a",
                 "b"
             ]);
-            perfLogger.on(PerfLogger.Events.end, () => {
+            perfLogger.on(PerfLogger.Events.complete, () => {
                 window.performance.measure(
                     "Taken a->b",
                     "a",
@@ -27,12 +27,12 @@ describe("PerfLogger-test", function() {
             perfLogger.mark("b");
         });
     });
-    describe("#markedNames", function(){
+    describe("#markedNames", function() {
         it("should should marked event names", function() {
-            const perfLogger = new PerfLogger();
+            const perfLogger = new PerfLogger(["a", "b"]);
             perfLogger.mark("a");
             perfLogger.mark("b");
-            assert.deepEqual(["a", "b"].sort(), perfLogger.markedNames.sort());
+            assert.deepEqual(perfLogger.markedNames.sort(), ["a", "b"].sort());
         });
     })
 });
