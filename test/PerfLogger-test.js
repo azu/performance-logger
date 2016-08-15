@@ -23,8 +23,16 @@ describe("PerfLogger-test", function() {
                 });
                 done();
             });
-            perfLogger.log("a");
-            perfLogger.log("b");
+            perfLogger.mark("a");
+            perfLogger.mark("b");
+        });
+    });
+    describe("#markedNames", function(){
+        it("should should marked event names", function() {
+            const perfLogger = new PerfLogger();
+            perfLogger.mark("a");
+            perfLogger.mark("b");
+            assert.deepEqual(["a", "b"].sort(), perfLogger.markedNames.sort());
         });
     })
 });

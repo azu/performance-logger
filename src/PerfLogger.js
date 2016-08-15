@@ -24,11 +24,11 @@ export default class PerfLogger extends EventEmitter {
      * logged event names
      * @returns {string[]}
      */
-    get loggedNames() {
-        return this._completedEventMap.values();
+    get markedNames() {
+        return this._completedEventMap.keys();
     }
 
-    get isAllCompleted() {
+    get isAllMarked() {
         return this._logItems.every((eventName) => {
             return this._completedEventMap.has(eventName);
         });
@@ -38,13 +38,13 @@ export default class PerfLogger extends EventEmitter {
      * Mark log with `markerName`
      * @param {string} markerName
      */
-    log(markerName) {
+    mark(markerName) {
         // output is only once
         if (this._isAlreadyOutput) {
             return;
         }
         this._mark(markerName);
-        if (this.isAllCompleted) {
+        if (this.isAllMarked) {
             this.emit(PerfLogger.Events.end);
             this._isAlreadyOutput = true;
         }
@@ -59,8 +59,8 @@ export default class PerfLogger extends EventEmitter {
         if (this._completedEventMap.has(markerName)) {
             return;
         }
-        this._completedEventMap.set(markerName, {});
+        this._completedEventMap.set(markerName, true);
         window.performance.mark(markerName);
-        this.emit(PerfLogger.Events.log, markerName);
+        this.emit(PerfLogger.Events.mark, markerName);
     }
 };

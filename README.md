@@ -29,10 +29,10 @@ perfLogger.on(PerfLogger.Events.end, () => {
     });
 });
 // mark "a"
-perfLogger.log("a");
+perfLogger.mark("a");
 // mark "b"
-perfLogger.log("b");
-````
+perfLogger.mark("b");
+```
 
 ## Changelog
 
