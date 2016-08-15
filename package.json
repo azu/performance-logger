@@ -16,8 +16,8 @@
     "lib/"
   ],
   "version": "1.0.0",
-  "description": "PerformanceTimeline based logger",
-  "main": "lib/performance-logger.js",
+  "description": "Simple Perf logger based on `performance.mark` API.",
+  "main": "lib/PerfLogger.js",
   "directories": {
     "test": "test"
   },

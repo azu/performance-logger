@@ -1,6 +1,6 @@
 # performance-logger
 
-PerformanceTimeline based logger
+Simple Perf logger based on `performance.mark` API.
 
 ## Install
 
