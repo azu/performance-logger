@@ -18,7 +18,7 @@ const perfLogger = new PerfLogger([
     "b"
 ]);
 // All("a" and "b") complete!
-perfLogger.on(PerfLogger.Events.complete, () => {
+perfLogger.onComplete(() => {
     window.performance.measure(
         "Taken a->b",
         "a",

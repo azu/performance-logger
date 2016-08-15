@@ -10,7 +10,7 @@ describe("PerfLogger-test", function() {
                 "a",
                 "b"
             ]);
-            perfLogger.on(PerfLogger.Events.complete, () => {
+            perfLogger.onComplete(() => {
                 window.performance.measure(
                     "Taken a->b",
                     "a",

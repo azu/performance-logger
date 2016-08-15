@@ -35,6 +35,17 @@ export default class PerfLogger extends EventEmitter {
     }
 
     /**
+     * Register onComplete handler and return unregister handler function
+     * @param {Function} completeHandler
+     * @returns {function()}
+     */
+    onComplete(completeHandler){
+        this.on(PerfLogger.Events.complete, completeHandler);
+        return () => {
+            this.removeListener(PerfLogger.Events.complete, completeHandler);
+        };
+    }
+    /**
      * Mark log with `markerName`
      * @param {string} markerName
      */
