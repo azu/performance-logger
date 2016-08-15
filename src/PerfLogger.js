@@ -51,7 +51,6 @@ export default class PerfLogger extends EventEmitter {
     }
 
     /**
-     * `window.performance.mark` を使いマークを付けます
      * @param {string} markerName
      * @private
      */
